@@ -1,0 +1,43 @@
+<mat-card>
+  <form class="example-form" [formGroup]="myForm">
+
+
+    <div formArrayName="players">
+      <div  *ngFor="let player of myForm.controls.players.controls; let i=index" class="panel panel-default">
+        <div class="panel-heading">
+          <span>Player {{i + 1}}</span>
+          <button mat-button *ngIf="myForm.controls.players.controls.length > 1" (click)="removePlayer(i)">remove</button>
+        </div>
+        <div class="panel-body" [formGroupName]="i">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Player Name" #players>
+              </mat-form-field>
+        </div>
+      </div>
+    </div>        
+        <button mat-button (click)="addPlayer()">+</button>
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Number of Rounds per Day" min="0" #roundsPerDay>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Number of Singles per Round" min="0" max="maxSingles" #singlesPerRound>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Number of Doubles per Round"min="0" #doublesPerRound>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerOne" placeholder="First Day" #firstday>
+          <mat-datepicker-toggle matSuffix [for]="pickerOne"></mat-datepicker-toggle>
+          <mat-datepicker #pickerOne></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerTwo" placeholder="Last Day" #secondday>
+          <mat-datepicker-toggle matSuffix [for]="pickerTwo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTwo></mat-datepicker>
+        </mat-form-field>
+        <button mat-button (click)="generateMatches()" class="btn btn-success">Generate Matches</button>
+  </form>
+</mat-card>

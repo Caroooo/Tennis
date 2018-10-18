@@ -1,0 +1,45 @@
+<mat-card><div *ngFor="let s of singles">{{s}}</div></mat-card>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="firstSingle">
+    <th mat-header-cell *matHeaderCellDef> First Single </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstSingle}} </td>
+  </ng-container>
+
+  <!-- resultFirstSingle  Column -->
+  <ng-container matColumnDef="resultFirstSingle">
+    <th mat-header-cell *matHeaderCellDef> Result </th>
+    <td mat-cell *matCellDef="let element"> {{element.resultFirstSingle}} </td>
+  </ng-container>
+
+  <!-- secondSingle Column -->
+  <ng-container matColumnDef="secondSingle">
+    <th mat-header-cell *matHeaderCellDef> Second Single </th>
+    <td mat-cell *matCellDef="let element"> {{element.secondSingle}} </td>
+  </ng-container>
+
+  <!-- resultSecondSingle Column -->
+  <ng-container matColumnDef="resultSecondSingle">
+    <th mat-header-cell *matHeaderCellDef> resultSecondSingle </th>
+    <td mat-cell *matCellDef="let element"> {{element.resultSecondSingle}} </td>
+  </ng-container>
+
+  <!-- waiting Column -->
+  <ng-container matColumnDef="waiting">
+    <th mat-header-cell *matHeaderCellDef> Waiting </th>
+    <td mat-cell *matCellDef="let element"> {{element.waiting}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
